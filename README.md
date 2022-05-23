@@ -15,11 +15,6 @@ $ docker build -t openpipe/cross-compile
 $ container_id=$(docker create -ti --name "$image_name" $container_name bash)
 ```
 
-## Run
-```bash
-$ docker run openpipe/cross-compile
-```
-
 ## Deploy
 ```bash
 $ rm -rf ./generated-payloads
