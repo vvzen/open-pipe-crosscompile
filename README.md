@@ -5,7 +5,9 @@ This repo uses docker in order to download, compile and install a series of soft
 ## Build:
 
 ```bash
-$ container_id=$(docker create -ti --name openpipe-payloads openpipe/cross-compile bash)
+$ image_name="openpipe-payloads"
+$ container_name="openpipe/cross-compile"
+$ container_id=$(docker create -ti --name "$image_name" $container_name bash)
 ```
 
 ## Run
@@ -19,4 +21,9 @@ rm -rf ./generated-payloads
 mkdir -p ./generated-payloads
 # Copy the generated payload locally
 docker cp $container_id:/opt/payload/install ./generated-payloads
+```
+
+## Clean
+```bash
+docker rm -f $container_name
 ```
