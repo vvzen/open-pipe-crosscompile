@@ -6,7 +6,7 @@ This repo uses docker in order to download, compile and install a series of soft
 
 ```bash
 $ image_name="openpipe-payloads"
-$ container_name="openpipe/cross-compile"While iterating:
+$ container_name="openpipe/cross-compile"
 
 # For debugging (it's easier to see failures)
 $ docker build -t openpipe/cross-compile
