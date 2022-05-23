@@ -20,7 +20,7 @@ cd $DOWNLOAD_DIR
 
 rustup_version="1.61.0"
 rustup_payload_name="rustup-$rustup_version"
-wget "https://static.rust-lang.org/dist/rust-$rustup_version-aarch64-unknown-linux-gnu.tar.gz" -O "rustup.download"
+wget --quiet "https://static.rust-lang.org/dist/rust-$rustup_version-x86_64-unknown-linux-gnu.tar.gz" -O "rustup.download"
 
 mkdir "$rustup_payload_name"
 mv rustup.download "$rustup_payload_name"
