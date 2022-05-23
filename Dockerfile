@@ -39,9 +39,8 @@ RUN mkdir -p /opt/recipes
 COPY ./recipes/*.sh /opt/recipes
 
 # Do the actual build of the payloads
-#RUN /opt/recipes/rust.sh /opt/payload
-#RUN /opt/recipes/fish.sh /opt/payload
-#RUN /opt/recipes/helix-editor.sh /opt/payload
+RUN /opt/recipes/fish.sh /opt/payload
+RUN /opt/recipes/helix-editor.sh /opt/payload
 RUN /opt/recipes/tmux.sh /opt/payload
 
 CMD ["tree", "-L", "2", "/opt/payload/install"]
