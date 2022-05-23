@@ -6,24 +6,29 @@ This repo uses docker in order to download, compile and install a series of soft
 
 ```bash
 $ image_name="openpipe-payloads"
-$ container_name="openpipe/cross-compile"
+$ container_name="openpipe/cross-compile"While iterating:
+
+# For debugging (it's easier to see failures)
+$ docker build -t openpipe/cross-compile
+
+# For final release:
 $ container_id=$(docker create -ti --name "$image_name" $container_name bash)
 ```
 
 ## Run
 ```bash
-docker run openpipe/cross-compile
+$ docker run openpipe/cross-compile
 ```
 
 ## Deploy
 ```bash
-rm -rf ./generated-payloads
-mkdir -p ./generated-payloads
+$ rm -rf ./generated-payloads
+$ mkdir -p ./generated-payloads
 # Copy the generated payload locally
-docker cp $container_id:/opt/payload/install ./generated-payloads
+$ docker cp $container_id:/opt/payload/install ./generated-payloads
 ```
 
 ## Clean
 ```bash
-docker rm -f $container_name
+$ docker rm -f $container_name
 ```
