@@ -27,7 +27,7 @@ mv helixeditor.download "$helixeditor_payload_name"
 tree -L 1
 
 cd "$helixeditor_payload_name"
-tar --strip-components=1 -xf "helixeditor.download" 
+tar --strip-components=1 -xf "helixeditor.download"
 
 export PATH="~/.cargo/bin:$PATH"
 
@@ -35,5 +35,11 @@ which gcc
 gcc --version
 
 cargo build --release --target-dir "$INSTALL_DIR/helix-editor"
+cargo install --path helix-term
+hx --grammar fetch
+hx --grammar build
+
+# Copy the required runtime dir
+cp -r ./runtime "$INSTALL_DIR/helix-editor"
 
 echo "helix-editor install done."
