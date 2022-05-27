@@ -7,14 +7,15 @@ RUN yum update -y
 RUN yum groupinstall "Development Tools" -y
 RUN yum install wget -y
 RUN yum install git -y
-RUN yum install cmake -y 
-RUN yum install make -y 
+RUN yum install cmake -y
+RUN yum install make -y
 RUN yum install gcc -y
 RUN yum install gcc-c++ -y
 RUN yum install epel-release -y
 RUN yum install ncurses-devel -y
 RUN yum install cmake3 --enablerepo="epel" -y
 RUN yum install glibc -y
+RUN yum install zlib-devel -y
 # Nice utils
 RUN yum install which -y
 RUN yum install tree -y
@@ -42,5 +43,6 @@ COPY ./recipes/*.sh /opt/recipes
 RUN /opt/recipes/fish.sh /opt/payload
 RUN /opt/recipes/helix-editor.sh /opt/payload
 RUN /opt/recipes/tmux.sh /opt/payload
+RUN /opt/recipes/python.sh /opt/payload
 
 CMD ["tree", "-L", "2", "/opt/payload/install"]
