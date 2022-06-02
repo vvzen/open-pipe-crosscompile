@@ -16,6 +16,13 @@ RUN yum install ncurses-devel -y
 RUN yum install cmake3 --enablerepo="epel" -y
 RUN yum install glibc -y
 RUN yum install zlib-devel -y
+RUN yum install libffi-devel -y
+RUN yum install openssl-devel -y
+# For building docs
+RUN yum install asciidoc-doc -y
+RUN yum install xmlto -y
+RUN yum install docbook2X -y
+RUN ln -s /usr/bin/db2x_docbook2texi /usr/bin/docbook2x-texi
 # Nice utils
 RUN yum install which -y
 RUN yum install tree -y
@@ -40,9 +47,10 @@ RUN mkdir -p /opt/recipes
 COPY ./recipes/*.sh /opt/recipes
 
 # Do the actual build of the payloads
-RUN /opt/recipes/fish.sh /opt/payload
-RUN /opt/recipes/helix-editor.sh /opt/payload
-RUN /opt/recipes/tmux.sh /opt/payload
+#RUN /opt/recipes/fish.sh /opt/payload
+#RUN /opt/recipes/helix-editor.sh /opt/payload
+#RUN /opt/recipes/tmux.sh /opt/payload
 RUN /opt/recipes/python.sh /opt/payload
+#RUN /opt/recipes/git.sh /opt/payload
 
 CMD ["tree", "-L", "2", "/opt/payload/install"]

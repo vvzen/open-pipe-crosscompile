@@ -105,7 +105,10 @@ echo "Running ./configure"
 # Use it together with:
 #    --with-openssl=$CUSTOM_OPENSSL_PATH \
 
-./configure --with-system-ffi --prefix=$INSTALL_DIR/python3
+./configure \
+    --with-system-ffi \
+    --prefix=$INSTALL_DIR/python3 \
+    --enable-shared
 
 echo "Compiling python $VERSION"
 make -j
@@ -113,7 +116,7 @@ make -j
 #unset LD_RUN_PATH
 
 #echo "Running tests..."
-# make test
+#make test
 
 # The above^ is commented for now since I'm getting failures and I don't know:
 # - how relevant they are for us
@@ -125,6 +128,7 @@ make -j
 # test test_subprocess failed
 # 3 tests failed again:
 #     test_cmd_line test_subprocess test_tarfile
+
 
 echo "Installing to $INSTALL_DIR/python3.."
 make install

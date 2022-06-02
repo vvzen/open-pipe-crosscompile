@@ -27,7 +27,7 @@ mv tmux.download "$tmux_payload_name"
 tree -L 1
 
 cd "$tmux_payload_name"
-tar --strip-components=1 -xzf "tmux.download" 
+tar --strip-components=1 -xzf "tmux.download"
 
 ls -hal
 echo "Compiling tmux-$tmux_version"
@@ -35,7 +35,7 @@ sh ./autogen.sh
 ./configure --prefix=$INSTALL_DIR/tmux
 
 echo "Running make.."
-make 
+make
 
 echo "Installing to $INSTALL_DIR/tmux.."
 make install
